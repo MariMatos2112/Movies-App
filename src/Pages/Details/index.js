@@ -1,6 +1,8 @@
 import Axios from "axios";
 import React, { useState } from "react";
-import { Container } from "./styles";
+import Container from "./styles";
+import StarIcon from "../../Images/Icons/star.svg";
+import CheckboxIcon from "../../Images/Icons/checkbox.svg";
 
 function Details({ match }) {
   const [movieData, setMovieData] = useState({});
@@ -11,19 +13,39 @@ function Details({ match }) {
 
   return (
     <Container>
-      <img
-        src={`http://image.tmdb.org/t/p/w1280${movieData.poster_path}`}
-        alt="Movie Poster"
-      />
       <div>
-        <h1>{movieData.title}</h1>
-        <p>Released date: {movieData.release_date}</p>
-        <p>Original language: {movieData.original_language}</p>
-        <p>Adult movie: {movieData.adult}</p>
-        <p>Tagline: {movieData.tagline}</p>
-        <p>Overview: {movieData.overview}</p>
-        <p>Average vote: {movieData.vote_average} </p>
-        <p>Counted votes: {movieData.vote_count} </p>
+        <img
+          src={`http://image.tmdb.org/t/p/w1280${movieData.poster_path}`}
+          alt="Movie Poster"
+        />
+        <div>
+          <h1>{movieData.title}</h1>
+          <p>
+            <span>Released date:</span> {movieData.release_date}
+          </p>
+          <p>
+            <span>Original language:</span> {movieData.original_language}
+          </p>
+          <p>
+            <span>Adult movie:</span> {movieData.adult ? "Yes" : "No"}
+          </p>
+          <p>
+            <span>Tagline:</span> {movieData.tagline}
+          </p>
+          <p>
+            <span>Overview:</span> {movieData.overview}
+          </p>
+          <p>
+            <span>Average vote:</span> {movieData.vote_average}{" "}
+          </p>
+          <p>
+            <span>Counted votes:</span> {movieData.vote_count}{" "}
+          </p>
+          <div>
+            <button><span>Vote</span> <img src={StarIcon} alt="Rating Icon"/> </button>
+            <button><span>Add to my list</span><img src={CheckboxIcon} alt="Add to my list icon"/> </button>
+          </div>
+        </div>
       </div>
     </Container>
   );

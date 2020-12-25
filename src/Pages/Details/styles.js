@@ -1,17 +1,83 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    height: 100vh;
-    background-color: #422057ff;
-    padding: 50px;
+const Container = styled.div`
+  padding: 50px;
+  height: 100vh;
+  background-color: #422057ff;
+
+  div {
+    border: 1px solid #e9e9e9;
+    background-color: #e9e9e9;
+    height: 100%;
     display: flex;
 
-    img{
-        height: 90%;
-        width: auto;
+    img {
+      height: 100%;
     }
 
-    h1{
-        color: blue;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 40px;
+
+      h1 {
+        color: #422057ff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      p {
+        span {
+          text-transform: uppercase;
+          color: #422057ff;
+          font-weight: bold;
+        }
+      }
+
+      div {
+        display: flex;
+        padding: 0;
+        flex-direction: row;
+        height: 10%;
+        width: 50%;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        button {
+          padding: 10px;
+          cursor: pointer;
+          background-color: #422057ff;
+          border: 1px solid #fcf951ff;
+          width: 45%;
+          transition: all 0.2s;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          :hover {
+            background-color: #fcf951ff;
+            border: 1px solid #422057ff;
+          }
+
+          span {
+            color: #fcf951ff;
+            text-transform: uppercase;
+            margin-right: 15px;
+            font-weight: bold;
+          }
+
+          :hover span {
+            color: #422057ff;
+          }
+
+          img {
+            height: 25px;
+          }
+        }
+      }
     }
-`
+  }
+`;
+
+export default Container;
