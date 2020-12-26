@@ -78,10 +78,10 @@ export const ListsBox = styled.div`
 `;
 
 export const ListContainer = styled.div`
-  width: 100%;
+  width: 93%;
   margin-top: 20px;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 25% 25% 25% 25%;
   column-gap: 30px;
   row-gap: 20px;
 `;

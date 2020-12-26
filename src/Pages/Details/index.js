@@ -1,15 +1,15 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "./styles";
-import StarIcon from "../../Images/Icons/star.svg";
-import CheckboxIcon from "../../Images/Icons/checkbox.svg";
 
 function Details({ match }) {
   const [movieData, setMovieData] = useState({});
 
-  Axios.get(
-    `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=b1f64bad2ace8fdb2d2ccc0ba1d8e613&language=en-US`
-  ).then((response) => setMovieData(response.data));
+  useEffect(() => {
+    Axios.get(
+      `https://api.themoviedb.org/3/${match.params.type}/${match.params.id}?api_key=b1f64bad2ace8fdb2d2ccc0ba1d8e613&language=en-US`
+    ).then((response) => setMovieData(response.data));
+  }, []);
 
   return (
     <Container>
@@ -19,22 +19,42 @@ function Details({ match }) {
           alt="Movie Poster"
         />
         <div>
-          <h1>{movieData.title}</h1>
+          <h1>{movieData.title || movieData.name}</h1>
           <p>
-            <span>Released date:</span> {movieData.release_date}
+            <span>Released date:</span>{" "}
+            {movieData.release_date || movieData.first_air_date}
           </p>
           <p>
             <span>Original language:</span> {movieData.original_language}
           </p>
           <p>
-            <span>Adult movie:</span> {movieData.adult ? "Yes" : "No"}
+            <span>Homepage:</span>{" "}
+            {movieData.homepage ? (
+              <a href={movieData.homepage} target="_blank" rel="noreferrer">
+                {movieData.homepage}
+              </a>
+            ) : (
+              "Unavailable"
+            )}
           </p>
           <p>
-            <span>Tagline:</span> {movieData.tagline}
+            <span>Tagline:</span> {movieData.tagline ? `"${movieData.tagline}"` : "Unavailable"}
           </p>
           <p>
             <span>Overview:</span> {movieData.overview}
           </p>
+          {match.params.type === "tv" ? (
+            <>
+              <p>
+                <span>Number of seasons: </span>
+                {movieData.number_of_seasons}
+              </p>
+              <p>
+                <span>Number of episodes: </span>
+                {movieData.number_of_episodes}
+              </p>
+            </>
+          ) : null}
           <p>
             <span>Average vote:</span> {movieData.vote_average}{" "}
           </p>
@@ -42,8 +62,12 @@ function Details({ match }) {
             <span>Counted votes:</span> {movieData.vote_count}{" "}
           </p>
           <div>
-            <button><span>Vote</span> <img src={StarIcon} alt="Rating Icon"/> </button>
-            <button><span>Add to my list</span><img src={CheckboxIcon} alt="Add to my list icon"/> </button>
+            <button>
+              <span>Vote</span>
+            </button>
+            <button>
+              <span>Add to my list</span>
+            </button>
           </div>
         </div>
       </div>

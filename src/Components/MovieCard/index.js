@@ -4,9 +4,9 @@ import ImgNotFound from "../../Images/image-not-found.jpg";
 import { Link } from "react-router-dom";
 import HeartIcon from '../../Images/Icons/heart.svg';
 
-function MovieCard({ poster, title, id, rating }) {
+function MovieCard({ poster, title, id, rating, type }) {
   return (
-    <Link to={`details/${id}`} style={{textDecoration: "none"}}>
+    <Link to={`details/${type}/${id}`} style={{textDecoration: "none"}}>
       <Card>
         <img
           src={poster.includes("null") ? ImgNotFound : poster}

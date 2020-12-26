@@ -33,6 +33,14 @@ const Container = styled.div`
           color: #422057ff;
           font-weight: bold;
         }
+        a {
+          text-decoration: none;
+          transition: all .2s;
+
+          :hover{
+            text-decoration: underline;
+          }
+        }
       }
 
       div {
@@ -60,11 +68,16 @@ const Container = styled.div`
             border: 1px solid #422057ff;
           }
 
+          :focus {
+            outline: none;
+          }
+
           span {
             color: #fcf951ff;
             text-transform: uppercase;
-            margin-right: 15px;
             font-weight: bold;
+            font-size: 1rem;
+            font-family: "Jura", sans-serif;
           }
 
           :hover span {

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Container, ListContainer, ListsBox, ListsPage } from "./styles";
+import React, { useState, useEffect } from "react";
+import { ListContainer, ListsBox, ListsPage } from "./styles";
 import Axios from "axios";
 import Card from "../../Components/MovieCard/";
 
@@ -131,6 +131,7 @@ function Lists(props) {
             poster={`http://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
             id={movie.id}
             rating={movie.vote_average}
+            type={movie.adult || movie.adult === false ? "movie" : "tv"}
           />
         ))}
       </ListContainer>
