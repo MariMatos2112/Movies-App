@@ -4,6 +4,7 @@ const Container = styled.div`
   padding: 50px;
   height: 100vh;
   background-color: #422057ff;
+  position: relative;
 
   div {
     border: 1px solid #e9e9e9;
@@ -35,9 +36,9 @@ const Container = styled.div`
         }
         a {
           text-decoration: none;
-          transition: all .2s;
+          transition: all 0.2s;
 
-          :hover{
+          :hover {
             text-decoration: underline;
           }
         }
@@ -47,7 +48,7 @@ const Container = styled.div`
         display: flex;
         padding: 0;
         flex-direction: row;
-        height: 10%;
+        height: 11%;
         width: 50%;
         justify-content: space-between;
         margin-top: 20px;
@@ -58,14 +59,19 @@ const Container = styled.div`
           background-color: #422057ff;
           border: 1px solid #fcf951ff;
           width: 45%;
-          transition: all 0.2s;
+          height: 90%;
           display: flex;
           justify-content: center;
           align-items: center;
+          align-self: flex-end;
+          transition: all 0.2s;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 
           :hover {
             background-color: #fcf951ff;
             border: 1px solid #422057ff;
+            align-self: flex-start;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
           }
 
           :focus {

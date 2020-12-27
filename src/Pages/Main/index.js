@@ -28,7 +28,7 @@ function Main(props) {
           <Link to="/search">
             <button>Search a movie</button>
           </Link>
-          <Link>
+          <Link to="/my-list">
             <button>My list</button>
           </Link>
         </div>

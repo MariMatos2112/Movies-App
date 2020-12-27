@@ -10,6 +10,7 @@ export const SearchBox = styled.div`
   padding: 20px;
   border-radius: 10px;
   background-color: #e9e9e9;
+  position: relative;
 
   h1 {
     text-align: center;
@@ -33,6 +34,11 @@ export const SearchBox = styled.div`
       font-size: 1rem;
       color: #422057ff;
       font-family: 'Jura', sans-serif;
+
+      :focus{
+        border: 1px solid #422057ff;
+        outline: none;
+      }
     }
 
     button {

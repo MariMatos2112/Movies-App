@@ -63,9 +63,6 @@ function Details({ match }) {
           </p>
           <div>
             <button>
-              <span>Vote</span>
-            </button>
-            <button>
               <span>Add to my list</span>
             </button>
           </div>

@@ -1,12 +1,23 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { SearchPage, SearchBox } from "./styles";
 import Card from "../../Components/MovieCard/";
 import { ListContainer } from "../Lists/styles";
+import useLocalStorage from "../../Hooks/useLocalStorage";
+import NoSearchBox from "../../Components/NoSearchBox";
+import HomeBtn from "../../Components/HomeBtn";
 
 function Search(props) {
   const [userInput, setUserInput] = useState("");
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useLocalStorage("searched", []);
+  const [wasSearched, setWasSearched] = useState(false);
+  const inputRef = useRef();
+
+  useEffect(() => {
+    localStorage.getItem("searched") === null
+      ? setWasSearched(false)
+      : setWasSearched(true);
+  });
 
   const handleChange = (e) => {
     setUserInput(e.target.value);
@@ -27,22 +38,32 @@ function Search(props) {
         setMovies(searchResults);
       });
     });
+    inputFocus();
   };
+
+  const inputFocus = () => {
+    inputRef.current.focus();
+  } 
 
   return (
     <SearchPage>
       <SearchBox>
+        <HomeBtn/>
         <h1>Search for the movie or TV show you want</h1>
 
         <form onSubmit={handleSubmit}>
           <input
+            ref={inputRef}
             onChange={handleChange}
             placeholder="Type here"
             value={userInput}
+            autoFocus
           />
           <button>Search</button>
         </form>
       </SearchBox>
+
+      {wasSearched ? null : <NoSearchBox onClick={inputFocus}/>}
 
       <ListContainer>
         {movies.map((movie) => (

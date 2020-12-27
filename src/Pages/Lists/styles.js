@@ -11,6 +11,7 @@ export const ListsBox = styled.div`
   padding: 20px;
   border-radius: 10px;
   background-color: #e9e9e9;
+  position: relative;
 
   h1 {
     text-align: center;
