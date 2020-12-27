@@ -1,9 +1,11 @@
 import Axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { MyListContext } from "../../Contexts/MyListContext";
 import Container from "./styles";
 
 function Details({ match }) {
   const [movieData, setMovieData] = useState({});
+  const {favs, setFavs} = useContext(MyListContext);
 
   useEffect(() => {
     Axios.get(
@@ -62,7 +64,7 @@ function Details({ match }) {
             <span>Counted votes:</span> {movieData.vote_count}{" "}
           </p>
           <div>
-            <button>
+            <button onClick={() => setFavs([movieData, ...favs ])}>
               <span>Add to my list</span>
             </button>
           </div>

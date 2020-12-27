@@ -2,9 +2,9 @@ import React from "react";
 import Card from "./styles";
 import ImgNotFound from "../../Images/image-not-found.jpg";
 import { Link } from "react-router-dom";
-import HeartIcon from '../../Images/Icons/heart.svg';
 
 function MovieCard({ poster, title, id, rating, type }) {
+
   return (
     <Link to={`details/${type}/${id}`} style={{textDecoration: "none"}}>
       <Card>
@@ -14,7 +14,6 @@ function MovieCard({ poster, title, id, rating, type }) {
         />
         <div>
           <h5>{title} ({rating})</h5>
-          <img src={HeartIcon} alt="Add to My List"/>
         </div>
       </Card>
     </Link>
