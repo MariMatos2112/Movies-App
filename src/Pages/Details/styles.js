@@ -53,7 +53,7 @@ const Container = styled.div`
         justify-content: space-between;
         margin-top: 20px;
 
-        button {
+        button, a {
           padding: 10px;
           cursor: pointer;
           background-color: #422057ff;
@@ -66,6 +66,7 @@ const Container = styled.div`
           align-self: flex-end;
           transition: all 0.2s;
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+          text-decoration: none;
 
           :hover {
             background-color: #fcf951ff;

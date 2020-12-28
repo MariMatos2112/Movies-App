@@ -1,17 +1,23 @@
 import Axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { MyListContext } from "../../Contexts/MyListContext";
 import Container from "./styles";
 
 function Details({ match }) {
   const [movieData, setMovieData] = useState({});
-  const {favs, setFavs} = useContext(MyListContext);
+  const { favs, setFavs } = useContext(MyListContext);
 
   useEffect(() => {
     Axios.get(
       `https://api.themoviedb.org/3/${match.params.type}/${match.params.id}?api_key=b1f64bad2ace8fdb2d2ccc0ba1d8e613&language=en-US`
     ).then((response) => setMovieData(response.data));
   }, []);
+
+  const addItem = () => {
+    setFavs([movieData, ...favs]);
+    alert(`"${movieData.title}" was successfully added to My List`);
+  }
 
   return (
     <Container>
@@ -40,7 +46,8 @@ function Details({ match }) {
             )}
           </p>
           <p>
-            <span>Tagline:</span> {movieData.tagline ? `"${movieData.tagline}"` : "Unavailable"}
+            <span>Tagline:</span>{" "}
+            {movieData.tagline ? `"${movieData.tagline}"` : "Unavailable"}
           </p>
           <p>
             <span>Overview:</span> {movieData.overview}
@@ -64,9 +71,18 @@ function Details({ match }) {
             <span>Counted votes:</span> {movieData.vote_count}{" "}
           </p>
           <div>
-            <button onClick={() => setFavs([movieData, ...favs ])}>
+            <button
+              // onClick={() => {
+              //   setFavs([movieData, ...favs]);
+              //   alert(`"${movieData.title}" was addedd successfully to My List`);
+              // }}
+              onClick={addItem}
+            >
               <span>Add to my list</span>
             </button>
+            <Link to="/my-list">
+              <span>Go to my list</span>
+            </Link>
           </div>
         </div>
       </div>
