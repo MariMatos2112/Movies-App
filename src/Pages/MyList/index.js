@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import MovieCard from "../../Components/MovieCard";
 import { MyListContext } from "../../Contexts/MyListContext";
 import { ListContainer } from "../Lists/styles";
@@ -6,6 +6,10 @@ import { MyListPage, MyListTitle } from "./styles";
 
 function MyList(props) {
   const {favs} = useContext(MyListContext);
+
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favs));
+  }, []);
 
   return (
     <MyListPage>
