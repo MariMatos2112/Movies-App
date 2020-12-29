@@ -15,9 +15,20 @@ function Details({ match }) {
   }, []);
 
   const addItem = () => {
-    setFavs([movieData, ...favs]);
-    alert(`"${movieData.title}" was successfully added to My List`);
-  }
+    const inList = [];
+
+    JSON.parse(localStorage.getItem("favourites")).forEach((element) => {
+      element.backdrop_path === movieData.backdrop_path
+        ? inList.push(true)
+        : inList.push(false);
+    });
+
+    if (inList.toString().includes("true")) alert(`"${movieData.title}" is already in My List.`);
+    else {
+      setFavs([movieData, ...favs]);
+      alert(`"${movieData.title}" was sucessfully added to My List ;)`);
+    }
+  };
 
   return (
     <Container>

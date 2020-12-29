@@ -9,7 +9,6 @@ import { MyListContext } from "./Contexts/MyListContext";
 
 function App() {
   const localStorageFavs = localStorage.getItem("favourites");  
-  console.log(localStorageFavs);
   const [favs, setFavs] = useState(localStorageFavs ? JSON.parse(localStorageFavs) : []);
 
   return (
