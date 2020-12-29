@@ -31,6 +31,12 @@ function Details({ match }) {
     }
   };
 
+  const deleteItem = () => {
+    const leftItems = JSON.parse(localStorage.getItem("favourites")).filter(element => element.backdrop_path !== movieData.backdrop_path);
+    setFavs(leftItems);
+    alert(`"${movieData.title}" was removed from to My List`);
+  }
+
   return (
     <Container>
       <div>
@@ -87,7 +93,7 @@ function Details({ match }) {
               .getItem("favourites")
               .toString()
               .includes(movieData.backdrop_path) ? (
-              <button>
+              <button onClick={deleteItem}>
                 <span>Delete from my list</span>
               </button>
             ) : (

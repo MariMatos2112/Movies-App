@@ -49,7 +49,7 @@ const Container = styled.div`
         padding: 0;
         flex-direction: row;
         height: 11%;
-        width: 50%;
+        width: 55%;
         justify-content: space-between;
         margin-top: 20px;
 
