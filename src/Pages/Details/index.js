@@ -23,7 +23,8 @@ function Details({ match }) {
         : inList.push(false);
     });
 
-    if (inList.toString().includes("true")) alert(`"${movieData.title}" is already in My List.`);
+    if (inList.toString().includes("true"))
+      alert(`"${movieData.title}" is already in My List.`);
     else {
       setFavs([movieData, ...favs]);
       alert(`"${movieData.title}" was sucessfully added to My List ;)`);
@@ -82,17 +83,21 @@ function Details({ match }) {
             <span>Counted votes:</span> {movieData.vote_count}{" "}
           </p>
           <div>
-            <button
-              // onClick={() => {
-              //   setFavs([movieData, ...favs]);
-              //   alert(`"${movieData.title}" was addedd successfully to My List`);
-              // }}
-              onClick={addItem}
-            >
-              <span>Add to my list</span>
-            </button>
+            {localStorage
+              .getItem("favourites")
+              .toString()
+              .includes(movieData.backdrop_path) ? (
+              <button>
+                <span>Delete from my list</span>
+              </button>
+            ) : (
+              <button onClick={addItem}>
+                <span>Add to my list</span>
+              </button>
+            )}
+
             <Link to="/my-list">
-              <span>Go to my list</span>
+                <span>Go to my list</span>
             </Link>
           </div>
         </div>
