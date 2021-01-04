@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { ListContainer, ListsBox, ListsPage } from "./styles";
 import Axios from "axios";
 import Card from "../../Components/MovieCard/";
-import HomeBtn from "../../Components/HomeBtn";
 
 function Lists(props) {
   const [programType, setProgramType] = useState("movie");
@@ -80,7 +79,6 @@ function Lists(props) {
   return (
     <ListsPage>
       <ListsBox>
-        <HomeBtn />
         <h1>Choose the list of your preference</h1>
         <div>
           <div>

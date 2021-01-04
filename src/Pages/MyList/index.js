@@ -1,15 +1,23 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MovieCard from "../../Components/MovieCard";
+import NoSearchBox from "../../Components/NoSearchBox";
 import { MyListContext } from "../../Contexts/MyListContext";
 import { ListContainer } from "../Lists/styles";
 import { MyListPage, MyListTitle } from "./styles";
 
 function MyList(props) {
-  const {favs} = useContext(MyListContext);
+  const { favs } = useContext(MyListContext);
+  const [favsChosen, setFavsChosen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favs));
   }, []);
+
+  useEffect(() => {
+    localStorage.getItem("favourites") === "[]"
+      ? setFavsChosen(false)
+      : setFavsChosen(true);
+  });
 
   return (
     <MyListPage>
@@ -17,8 +25,10 @@ function MyList(props) {
         <h1>My List</h1>
       </MyListTitle>
 
+      {favsChosen ? null : <NoSearchBox title="You haven't saved anything in 'My List' yet" linkLabel="Search a movie or tv show now!" linkTarget="/search" />}
+
       <ListContainer>
-      {favs.map((movie) => (
+        {favs.map((movie) => (
           <MovieCard
             title={movie.title || movie.name}
             poster={`http://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}

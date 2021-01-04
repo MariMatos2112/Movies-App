@@ -16,7 +16,7 @@ export const Container = styled.div`
     text-align: center;
   }
 
-  button {
+  button, a {
     background-color: #cecece;
     width: 30%;
     padding: 15px;
@@ -27,6 +27,8 @@ export const Container = styled.div`
     transition: all 0.2s;
     font-size: 1rem;
     margin: 0 auto;
+    text-decoration: none;
+    text-align: center;
 
     :hover {
       background-color: #fcf951ff;
