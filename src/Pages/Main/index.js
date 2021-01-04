@@ -6,7 +6,7 @@ import Movie2 from "../../Images/movie2.jpg";
 import Movie3 from "../../Images/movie3.jpg";
 import Movie4 from "../../Images/movie4.jpg";
 import Movie5 from "../../Images/movie5.jpg";
-import ArrowRight from '../../Images/Icons/arrow-right.svg';
+import ArrowRight from "../../Images/Icons/arrow-right.svg";
 
 function Main(props) {
   const [wallpaper, setWallpaper] = useState(Movie1);
@@ -42,27 +42,27 @@ function Main(props) {
           <img
             onClick={() => setWallpaper(Movie1)}
             src={Movie1}
-            alt="Deadpool wallpaper"
+            alt="Birds of Prey wallpaper"
           />
           <img
             onClick={() => setWallpaper(Movie2)}
             src={Movie2}
-            alt="Birds of Prey wallpaper"
+            alt="Deadpool wallpaper"
           />
           <img
             onClick={() => setWallpaper(Movie3)}
             src={Movie3}
-            alt="Birds of Prey wallpaper"
+            alt="Breaking Bad"
           />
           <img
             onClick={() => setWallpaper(Movie4)}
             src={Movie4}
-            alt="Birds of Prey wallpaper"
+            alt="House of Cards"
           />
           <img
             onClick={() => setWallpaper(Movie5)}
             src={Movie5}
-            alt="Birds of Prey wallpaper"
+            alt="Wonder Woman"
           />
         </div>
         <div>

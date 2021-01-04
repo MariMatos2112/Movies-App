@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyListContext } from "../../Contexts/MyListContext";
 import Container from "./styles";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function Details({ match }) {
   const [movieData, setMovieData] = useState({});
@@ -14,7 +14,7 @@ function Details({ match }) {
     Axios.get(
       `https://api.themoviedb.org/3/${match.params.type}/${match.params.id}?api_key=b1f64bad2ace8fdb2d2ccc0ba1d8e613&language=en-US`
     ).then((response) => setMovieData(response.data));
-  }, []);
+  }, [match.params.type, match.params.id]);
 
   const addItem = () => {
     setFavs([movieData, ...favs]);
@@ -30,8 +30,6 @@ function Details({ match }) {
     alert(`"${movieData.title}" was removed from to My List`);
     history.push("/my-list");
   };
-
-  
 
   return (
     <Container>

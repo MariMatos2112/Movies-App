@@ -34,16 +34,6 @@ const Card = styled.div`
       text-decoration: none !important;
       text-transform: uppercase;
     }
-
-    img{
-      width: 8%;
-      filter: grayscale(1);
-      transition: all .2s;
-
-      :hover{
-        filter: grayscale(0);
-      }
-    }
   }
 `;
 

@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import Movie1 from "../../Images/movie2.jpg";
 
 const InitialPage = styled.div`
   height: 100vh;
   position: relative;
-  /* background-image: url(${Movie1}); */
   background-image: url(${(props) => props.wallpaper});
   background-position: center;
   background-repeat: no-repeat;
@@ -82,7 +80,6 @@ const InitialPage = styled.div`
       width: 88%;
       img {
         height: 20%;
-        /* width: 100%; */
         filter: grayscale(0.7);
         transition: all 0.2s;
 
@@ -112,7 +109,6 @@ const InitialPage = styled.div`
         filter: invert(1);
         transition: filter .2s;
         height: 18%;
-        /* margin-left: -10px; */
       }
     }
   }

@@ -32,9 +32,6 @@ function Lists(props) {
         ).then((response) => setMoviesList(response.data.results));
   });
 
-  // const listBtn = useRef([]);
-  // console.log(listBtn.current);
-
   const btnData = [
     {
       typeState: "movie",
@@ -143,7 +140,5 @@ function Lists(props) {
     </ListsPage>
   );
 }
-//movie.title
-//movie.backdrop_path
-//movie.vote_average
+
 export default Lists;
