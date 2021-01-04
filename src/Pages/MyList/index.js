@@ -25,7 +25,7 @@ function MyList(props) {
         <h1>My List</h1>
       </MyListTitle>
 
-      {favsChosen ? null : <NoSearchBox title="You haven't saved anything in 'My List' yet" linkLabel="Search a movie or tv show now!" linkTarget="/search" />}
+      {favsChosen ? null : <NoSearchBox title="You haven't saved anything in 'My List'" linkLabel="Search a movie or tv show now!" linkTarget="/search" />}
 
       <ListContainer>
         {favs.map((movie) => (

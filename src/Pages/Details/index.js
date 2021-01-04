@@ -3,10 +3,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyListContext } from "../../Contexts/MyListContext";
 import Container from "./styles";
+import {useHistory} from 'react-router-dom';
 
 function Details({ match }) {
   const [movieData, setMovieData] = useState({});
   const { favs, setFavs } = useContext(MyListContext);
+  const history = useHistory();
 
   useEffect(() => {
     Axios.get(
@@ -15,27 +17,21 @@ function Details({ match }) {
   }, []);
 
   const addItem = () => {
-    const inList = [];
-
-    JSON.parse(localStorage.getItem("favourites")).forEach((element) => {
-      element.backdrop_path === movieData.backdrop_path
-        ? inList.push(true)
-        : inList.push(false);
-    });
-
-    if (inList.toString().includes("true"))
-      alert(`"${movieData.title}" is already in My List.`);
-    else {
-      setFavs([movieData, ...favs]);
-      alert(`"${movieData.title}" was sucessfully added to My List ;)`);
-    }
+    setFavs([movieData, ...favs]);
+    alert(`"${movieData.title}" was sucessfully added to My List ;)`);
+    history.push("/my-list");
   };
 
   const deleteItem = () => {
-    const leftItems = JSON.parse(localStorage.getItem("favourites")).filter(element => element.backdrop_path !== movieData.backdrop_path);
+    const leftItems = JSON.parse(localStorage.getItem("favourites")).filter(
+      (element) => element.backdrop_path !== movieData.backdrop_path
+    );
     setFavs(leftItems);
     alert(`"${movieData.title}" was removed from to My List`);
-  }
+    history.push("/my-list");
+  };
+
+  
 
   return (
     <Container>
@@ -103,7 +99,7 @@ function Details({ match }) {
             )}
 
             <Link to="/my-list">
-                <span>Go to my list</span>
+              <span>Go to my list</span>
             </Link>
           </div>
         </div>
