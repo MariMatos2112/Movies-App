@@ -10,5 +10,19 @@ export const MyListTitle = styled.div`
   border-radius: 10px;
   background-color: #e9e9e9;
   position: relative;
-  text-align: center;
+
+  img{
+    width: 40px;
+    filter: grayscale(1);
+    transition: all .1s;
+
+    :hover{
+      filter: grayscale(0);
+      transform: scale(1.15);
+    }
+  }
+
+  h1{
+    text-align: center;
+  }
 `;

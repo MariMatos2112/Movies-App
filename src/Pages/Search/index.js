@@ -5,6 +5,8 @@ import Card from "../../Components/MovieCard/";
 import { ListContainer } from "../Lists/styles";
 import useLocalStorage from "../../Hooks/useLocalStorage";
 import NoSearchBox from "../../Components/NoSearchBox";
+import HomeBtn from "../../Images/Icons/home.svg";
+import { Link } from "react-router-dom";
 
 function Search(props) {
   const [userInput, setUserInput] = useState("");
@@ -42,11 +44,15 @@ function Search(props) {
 
   const inputFocus = () => {
     inputRef.current.focus();
-  } 
+  };
 
   return (
     <SearchPage>
       <SearchBox>
+        <Link to="/">
+          <img src={HomeBtn} alt="Homepage icon" />
+        </Link>
+
         <h1>Search for the movie or TV show you want</h1>
 
         <form onSubmit={handleSubmit}>
@@ -61,7 +67,13 @@ function Search(props) {
         </form>
       </SearchBox>
 
-      {wasSearched ? null : <NoSearchBox onClick={inputFocus} title="You haven't searched for anything yet..." btnLabel="Search a movie or tv show now!" />}
+      {wasSearched ? null : (
+        <NoSearchBox
+          onClick={inputFocus}
+          title="You haven't searched for anything yet..."
+          btnLabel="Search a movie or tv show now!"
+        />
+      )}
 
       <ListContainer>
         {movies.map((movie) => (

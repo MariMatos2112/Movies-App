@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ListContainer, ListsBox, ListsPage } from "./styles";
 import Axios from "axios";
 import Card from "../../Components/MovieCard/";
+import HomeBtn from "../../Images/Icons/home.svg";
+import { Link } from "react-router-dom";
 
 function Lists(props) {
   const [programType, setProgramType] = useState("movie");
@@ -79,6 +81,9 @@ function Lists(props) {
   return (
     <ListsPage>
       <ListsBox>
+        <Link to="/">
+          <img src={HomeBtn} alt="Homepage icon" />
+        </Link>
         <h1>Choose the list of your preference</h1>
         <div>
           <div>

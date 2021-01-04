@@ -12,6 +12,17 @@ export const SearchBox = styled.div`
   background-color: #e9e9e9;
   position: relative;
 
+  img{
+    width: 40px;
+    filter: grayscale(1);
+    transition: all .1s;
+
+    :hover{
+      filter: grayscale(0);
+      transform: scale(1.15);
+    }
+  }
+
   h1 {
     text-align: center;
     color: #422057ff;
